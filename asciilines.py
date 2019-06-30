@@ -22,18 +22,26 @@ else:
     cols = cols[:-1]
     cols = int(cols, 10)
     #Print out canvas
-    canvas = ""
+    canvas = [[0 for x in range(cols)] for y in range(rows)]
     i = 0
     j = 0
 
     while i < rows:
         while j < cols:
-            canvas = canvas + "."
+            canvas[i][j] = "."
+        #    canvas = canvas + "."
             j += 1
-        canvas = canvas + "\n"
+        #canvas = canvas + "\n"
         j = 0
         i += 1
 
     #get rid of last new line and print out canvas
-    canvas = canvas[:-1]
+    canvasPrint = ""
     print(canvas)
+    for x in range(rows):
+        for y in range(cols):
+            canvasPrint = canvasPrint + canvas[x][y]
+        canvasPrint = canvasPrint + "\n"
+
+    canvasPrint = canvasPrint[:-1]
+    print(canvasPrint)
