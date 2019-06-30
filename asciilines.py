@@ -16,6 +16,10 @@ else:
 
     #Get dimensions of canvas
     dimensions = fileContent[0].split(' ')
+    #If canvas size input is wrong display error and quit program
+    if len(dimensions) != 2:
+        print("Invalid number of argument on first line of file for canvas size. Must be two numbers seperated by space")
+        sys.exit()
     rows = dimensions[0]
     rows = int(rows, 10)
     cols = dimensions[1]
@@ -37,6 +41,12 @@ else:
     line = 1
     while line < len(fileContent):
         command = fileContent[line].split(' ')
+
+        #throw error and exit if command is invalid
+        if len(command) != 5:
+            print("Invalid number of arguments for one of the commands. Must be 5 arguments seperated by space")
+            sys.exit()
+
         #get all arguments for the command
         character = command[0]
         rowP = int(command[1], 10)
@@ -51,7 +61,6 @@ else:
         for x in range(length):
             #Check for in bounds of canvas for vertical
             if direction == 'v':
-                print(rowP)
                 if rowP < 0 or rowP > (rows - 1):
                     rowP += 1
                     continue
