@@ -29,15 +29,50 @@ else:
     while i < rows:
         while j < cols:
             canvas[i][j] = "."
-        #    canvas = canvas + "."
             j += 1
-        #canvas = canvas + "\n"
         j = 0
         i += 1
 
+    #Take in command of each line and add it to the canvas
+    line = 1
+    while line < len(fileContent):
+        command = fileContent[line].split(' ')
+        #get all arguments for the command
+        character = command[0]
+        rowP = int(command[1], 10)
+        colP = int(command[2], 10)
+        direction = command[3]
+        length = command[4]
+        #get rid of ending new line and convert to int
+        length = length[:-1]
+        length = int(length, 10)
+
+        #set the correct positions to the character in command
+        for x in range(length):
+            #Check for in bounds of canvas for vertical
+            if direction == 'v':
+                print(rowP)
+                if rowP < 0 or rowP > (rows - 1):
+                    rowP += 1
+                    continue
+                if colP < 0 or colP > (cols - 1):
+                    continue
+                canvas[rowP][colP] = character
+                rowP += 1
+            #Check for in bounds of canvas for horizontal
+            if direction == 'h':
+                if rowP < 0 or rowP > (rows - 1):
+                    continue
+                if colP < 0 or colP > (cols - 1):
+                    colP += 1
+                    continue
+                canvas[rowP][colP] = character
+                colP += 1
+
+        line += 1
+
     #get rid of last new line and print out canvas
     canvasPrint = ""
-    print(canvas)
     for x in range(rows):
         for y in range(cols):
             canvasPrint = canvasPrint + canvas[x][y]
