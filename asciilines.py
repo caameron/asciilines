@@ -8,4 +8,24 @@ import sys
 if len(sys.argv) == 1:
     print("No file provided, please run program with file")
 else:
-    print("THANK YOU")
+    #Read in content of file and store in variable
+    fileContent = None
+    f = open(sys.argv[1], "r")
+    if f.mode == 'r':
+        fileContent = f.readlines()
+
+    #Get dimensions of canvas
+    dimensions = fileContent[0].split(' ')
+    rows = dimensions[0]
+    rows = int(rows, 10)
+    cols = dimensions[1]
+    cols = cols[:-1]
+    cols = int(cols, 10)
+    #Print out canvas
+    canvas = ""
+    i = 0
+    j = 0
+    print(rows)
+    while i < rows:
+        print(i)
+        i += 1
