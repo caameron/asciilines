@@ -25,7 +25,15 @@ else:
     canvas = ""
     i = 0
     j = 0
-    print(rows)
+
     while i < rows:
-        print(i)
+        while j < cols:
+            canvas = canvas + "."
+            j += 1
+        canvas = canvas + "\n"
+        j = 0
         i += 1
+
+    #get rid of last new line and print out canvas
+    canvas = canvas[:-1]
+    print(canvas)
