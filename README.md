@@ -1,4 +1,4 @@
-#HW 1 Mini Project
+# HW 1 Mini Project
 
 Copyright (c) 2019 Caameron Nakasone
 
